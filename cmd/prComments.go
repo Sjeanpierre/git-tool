@@ -6,6 +6,7 @@ import (
 	"github.com/google/go-github/github"
 	"github.com/spf13/cobra"
 	"log"
+	"strings"
 )
 
 // commentCmd represents the adding of comment command
@@ -14,7 +15,7 @@ var commentCmd = &cobra.Command{
 	Short: "Add a comment to a Github PR",
 	Args:  cobra.MinimumNArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
-		prComment(args[0], args[1])
+		prComment(args[0], strings.Join(args[1:],""))
 	},
 }
 
