@@ -136,7 +136,7 @@ func GetPRComment(commentURL string) (ic github.IssueComment, e error) {
 		fmt.Errorf("comment id invalid, cannot be coverted to int")
 	}
 	client := NewClient()
-	comm, _, err := client.Issues.GetComment(context.Background(), owner, repo, cid)
+	comm, _, err := client.Issues.GetComment(context.Background(), owner, repo, int64(cid))
 	if err != nil {
 		return ic, fmt.Errorf("encountered error posting comment to PR %s - %s - %d, error: %s", owner, repo, number, err.Error())
 	}
